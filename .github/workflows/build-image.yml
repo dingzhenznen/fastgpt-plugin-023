@@ -40,7 +40,7 @@ jobs:
           platforms: linux/${{ matrix.archs.arch }}
           push: true
           tags: |
-            ghcr.io/${{ github.repository_owner }}/fastgpt-plugin:${{ github.sha }}-${{ matrix.archs.arch }}
+            ghcr.io/${{ github.repository_owner }}/fastgpt-plugin-023:${{ github.sha }}-${{ matrix.archs.arch }}
           labels: |
             org.opencontainers.image.source=https://github.com/${{ github.repository }}
             org.opencontainers.image.description=https://github.com/${{ github.repository }} image
@@ -89,8 +89,8 @@ jobs:
         run: |
           # Define all tags for different registries
         
-          GITHUB_LATEST="ghcr.io/${{ github.repository_owner }}/fastgpt-plugin:latest"
-          GITHUB_SHA="ghcr.io/${{ github.repository_owner }}/fastgpt-plugin:${{ github.sha }}"
+          GITHUB_LATEST="ghcr.io/${{ github.repository_owner }}/fastgpt-plugin-023:latest"
+          GITHUB_SHA="ghcr.io/${{ github.repository_owner }}/fastgpt-plugin-023:${{ github.sha }}"
 
          
           # Create array of all tags
@@ -100,6 +100,6 @@ jobs:
           for TAG in $TAGS; do
             echo "Creating manifest list for: $TAG"
             docker buildx imagetools create -t $TAG \
-              $(printf 'ghcr.io/${{ github.repository_owner }}/fastgpt-plugin@sha256:%s ' *)
+              $(printf 'ghcr.io/${{ github.repository_owner }}/fastgpt-plugin-023@sha256:%s ' *)
             sleep 2
           done
