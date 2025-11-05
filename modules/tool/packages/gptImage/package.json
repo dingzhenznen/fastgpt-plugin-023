@@ -1,5 +1,5 @@
 {
-  "name": "@fastgpt-plugins/tool-whisper",
+  "name": "@fastgpt-plugins/tool-gpt-image",
   "module": "index.ts",
   "type": "module",
   "scripts": {
