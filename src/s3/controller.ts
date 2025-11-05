@@ -31,7 +31,8 @@ export class S3Service {
       useSSL: this.config.useSSL,
       accessKey: this.config.accessKey,
       secretKey: this.config.secretKey,
-      transportAgent: this.config.transportAgent
+      transportAgent: this.config.transportAgent,
+      pathStyle:false
     });
 
     this.externalClient = this.config.externalBaseUrl
@@ -52,6 +53,7 @@ export class S3Service {
   }
 
   async initialize(policy: 'public' | 'private') {
+    console.log('Initializing S3 bucket...',this.config.bucket);
     const [, err] = await catchError(async () => {
       addLog.info(`Checking bucket: ${this.config.bucket}`);
       const bucketExists = await this.client.bucketExists(this.config.bucket);
